@@ -31,12 +31,10 @@ exports.create = async (req, res, next) => {
       }
 
     if (!payload.userId || !payload.name || !payload.logo) {
-      return res
-        .status(400)
-        .send({
-          success: false,
-          message: "Please provide all required fields",
-        });
+      return res.status(400).send({
+        success: false,
+        message: "Please provide all required fields",
+      });
     }
 
     // check user existing collection
@@ -46,24 +44,20 @@ exports.create = async (req, res, next) => {
     });
 
     if (existingCollection) {
-      return res
-        .status(400)
-        .send({
-          success: false,
-          message: "Collection with same name already exists",
-        });
+      return res.status(400).send({
+        success: false,
+        message: "Collection with same name already exists",
+      });
     }
 
     // console.log("reached on collection")
     const collection = await Collection.create(payload);
     // console.log(collection,"collection==========>")
-    return res
-      .status(200)
-      .send({
-        success: true,
-        message: "Collection created successfully",
-        collection,
-      });
+    return res.status(200).send({
+      success: true,
+      message: "Collection created successfully",
+      collection,
+    });
   } catch (error) {
     // console.log(error,"error in the api")
     if (error.code === 11000 || error.code === 11001)
@@ -87,12 +81,10 @@ exports.edit = async (req, res, next) => {
     payload.userId = "61408000cef27850fdea272b";
 
     if (!payload._id || !payload.userId)
-      return res
-        .status(400)
-        .send({
-          success: false,
-          message: "Please provide all required fields",
-        });
+      return res.status(400).send({
+        success: false,
+        message: "Please provide all required fields",
+      });
 
     // if name is given then check user existing collection
     if (payload.name) {
@@ -103,12 +95,10 @@ exports.edit = async (req, res, next) => {
       });
 
       if (existingCollection)
-        return res
-          .status(400)
-          .send({
-            success: false,
-            message: "Collection with same name already exists",
-          });
+        return res.status(400).send({
+          success: false,
+          message: "Collection with same name already exists",
+        });
     }
 
     const collection = await Collection.findByIdAndUpdate(
@@ -141,12 +131,10 @@ exports.delete = async (req, res, next) => {
           collectionId,
         });
       else
-        return res
-          .status(400)
-          .send({
-            success: false,
-            message: "Collection not found for given Id",
-          });
+        return res.status(400).send({
+          success: false,
+          message: "Collection not found for given Id",
+        });
     } else
       return res
         .status(400)
@@ -184,16 +172,14 @@ exports.get = async (req, res, next) => {
 
         return res.json({
           success: true,
-          message: "Collection retrieved successfully!!!",
+          message: "Collection retrieved successfully",
           collection,
         });
       } else
-        return res
-          .status(400)
-          .send({
-            success: false,
-            message: "Collection not found for given Id",
-          });
+        return res.status(400).send({
+          success: false,
+          message: "Collection not found for given Id",
+        });
     } else
       return res
         .status(400)
@@ -274,7 +260,7 @@ exports.list = async (req, res, next) => {
     const allcollections = await Collection.find();
     return res.send({
       success: true,
-      message: "Collections fetched successfully",
+      message: "Collections fetched successfully!!!",
       data: {
         collections: allcollections.length ? allcollections : null,
 
