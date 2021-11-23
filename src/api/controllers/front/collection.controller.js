@@ -260,7 +260,7 @@ exports.list = async (req, res, next) => {
     const allcollections = await Collection.find();
     return res.send({
       success: true,
-      message: "Collections fetched successfully!!!",
+      message: "Collections fetched successfully",
       data: {
         collections: allcollections.length ? allcollections : null,
 

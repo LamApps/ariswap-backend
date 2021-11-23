@@ -1,20 +1,21 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 /**
  * NFT Schema
  * @private
  */
-const NFTSchema = new mongoose.Schema({
+const NFTSchema = new mongoose.Schema(
+  {
     name: { type: String },
     description: { type: String },
-    creatorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    nftOwnerId:{type:String},
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    creatorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    nftOwnerId: { type: String },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     // categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
-    collectionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Collection' },
+    collectionId: { type: mongoose.Schema.Types.ObjectId, ref: "Collection" },
     currentPrice: { type: Number },
-    ownerAddress:{type:String},
+    ownerAddress: { type: String },
     txHash: { type: String },
     image: { type: String },
     royalty: { type: String },
@@ -29,11 +30,13 @@ const NFTSchema = new mongoose.Schema({
     auctionStartTime: { type: String },
     auctionEndTime: { type: String },
     metaData: { type: String }, // ipfs link
-}, { timestamps: true }
+    type: { type: String, default: "ARISWAP" }, // ARISWAP | CELO_PUNK
+  },
+  { timestamps: true }
 );
 
 /**
  * @typedef NFT
  */
 
-module.exports = mongoose.model('NFT', NFTSchema);
+module.exports = mongoose.model("NFT", NFTSchema);
