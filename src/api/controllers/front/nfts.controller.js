@@ -211,14 +211,6 @@ exports.get = async (req, res, next) => {
 
 // API to get NFTs list
 exports.list = async (req, res, next) => {
-  NFT.updateMany(
-    {},
-    {
-      $set: {
-        type: "ARISWAP",
-      },
-    }
-  ).then((res) => console.log(res));
   try {
     let { page, limit, collectionId, explore } = req.query;
     // console.log(explore,"explore==>")
