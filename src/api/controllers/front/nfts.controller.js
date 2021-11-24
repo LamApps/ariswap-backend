@@ -11,7 +11,7 @@ const {
 
 // API to create NFT
 exports.create = async (req, res, next) => {
-  //console.log(req.body,"req.body in the backend")
+  console.log("-----------nft create start------------");
   try {
     let payload = req.body;
     if (req.files && req.files.image) {
