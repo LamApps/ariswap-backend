@@ -33,7 +33,7 @@ exports.create = async (req, res, next) => {
 
     payload.ownerId = req.user;
     payload.creatorId = req.user;
-    console.log(payload, "payload to create nft");
+    // console.log(payload, "payload to create nft");
 
     const nft = await NFT.create(payload);
     //console.log(nft,"created Nft==>")
@@ -98,7 +98,7 @@ exports.update = async (req, res, next) => {
       { $set: payload },
       { new: true }
     );
-    console.log("nft after update");
+    // console.log("nft after update");
     return res.send({
       success: false,
       message: "Sorry! You rejected wallet processing",
@@ -312,8 +312,8 @@ exports.list = async (req, res, next) => {
 exports.editNft = async (req, res, next) => {
   try {
     const filter = { _id: req.body.nftOwnerId };
-    console.log(req.body.currentUserId, "req.body.currentUserId");
-    console.log(req.body.ownerId, "req.body.ownerId");
+    // console.log(req.body.currentUserId, "req.body.currentUserId");
+    // console.log(req.body.ownerId, "req.body.ownerId");
     let update = {
       nftOwnerId: req.body.currentUserId,
     };
