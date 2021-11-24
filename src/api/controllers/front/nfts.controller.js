@@ -336,11 +336,36 @@ exports.editNft = async (req, res, next) => {
 
 exports.myNFT = async (req, res, next) => {
   try {
-    const celoPunkMetaData = req.body;
+    const celoPunkMetaData = req.body.celoPunkMetaData;
+    const userId = req.body.userId;
+    const ownerAddress = req.body.ownerAddress;
+    for await (let item of celoPunkMetaData) {
+      await NFT.create({
+        name: item.name,
+        description: item.description,
+        ownerId: userId,
+        nftOwnerId: userId,
+        userId: userId,
+        ownerAddress,
+        image: item.image,
+        metaData: item.tokenUri, // ipfs link
+        type: "CELO_PUNK",
+      });
+    }
+
+    const myData = await NFT.find({
+      status: { $ne: 0 },
+      nftOwnerId: userId,
+    });
+
+    // console.log(wholeData,"nfts fetched ");
+    // nfts.push(wholeData)
     return res.send({
       success: true,
       message: "MyNFTs fetched successfully",
-      data: celoPunkMetaData,
+      data: {
+        nfts: myData,
+      },
     });
   } catch (error) {
     return next(error);
