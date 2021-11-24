@@ -11,11 +11,12 @@ const {
 
 // API to create NFT
 exports.create = async (req, res, next) => {
-  console.log("-----------nft create start------------");
   try {
     let payload = req.body;
     if (req.files && req.files.image) {
       const image = req.files.image[0];
+      console.log("======================Image Path=================");
+      console.log(image.path);
       const imgData = fs.readFileSync(image.path);
       payload.image = await addImage(imgData);
     }
