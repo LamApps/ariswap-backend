@@ -339,15 +339,16 @@ exports.myNFT = async (req, res, next) => {
     const celoPunkMetaData = req.body.celoPunkMetaData;
     const userId = req.body.userId;
     const ownerAddress = req.body.ownerAddress;
+    await NFT.deleteMany({ nftOwnerId: userId, type: "CELO_PUNK" });
     for await (let item of celoPunkMetaData) {
       await NFT.create({
-        name: item.name,
-        description: item.description,
+        name: item.data.name,
+        description: itme.data.description,
         ownerId: userId,
         nftOwnerId: userId,
         userId: userId,
         ownerAddress,
-        image: item.image,
+        image: item.data.image,
         metaData: item.tokenUri, // ipfs link
         type: "CELO_PUNK",
       });
