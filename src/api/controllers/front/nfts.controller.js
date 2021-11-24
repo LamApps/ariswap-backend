@@ -43,7 +43,7 @@ exports.create = async (req, res, next) => {
       nft,
     });
   } catch (error) {
-    //console.log(error,"error while creating nft")
+    console.log("upload error: ", error);
     return next(error);
   }
 };
