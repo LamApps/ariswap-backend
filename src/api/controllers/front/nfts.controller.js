@@ -343,7 +343,7 @@ exports.myNFT = async (req, res, next) => {
     for await (let item of celoPunkMetaData) {
       await NFT.create({
         name: item.data.name,
-        description: itme.data.description,
+        description: item.data.description,
         ownerId: userId,
         nftOwnerId: userId,
         userId: userId,
