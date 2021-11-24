@@ -336,11 +336,11 @@ exports.editNft = async (req, res, next) => {
 
 exports.myNFT = async (req, res, next) => {
   try {
-    const celoPunkMetaData = req.body.celoPunkMetaData;
+    const celoPunkMetaData = req.body;
     return res.send({
       success: true,
       message: "MyNFTs fetched successfully",
-      data: req.body,
+      data: celoPunkMetaData,
     });
   } catch (error) {
     return next(error);
