@@ -1,7 +1,7 @@
 const FixedPriceTokens = require("../../models/fixedPriceTokens.model");
 
 exports.addNftToken = async (req, res) => {
-  console.log("insdie fixed ");
+  // console.log("insdie fixed ");
   try {
     let result = await FixedPriceTokens.create(req.body);
 

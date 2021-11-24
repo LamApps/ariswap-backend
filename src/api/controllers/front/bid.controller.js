@@ -160,7 +160,7 @@ exports.list = async (req, res, next) => {
 // API to accept bid
 exports.accept = async (req, res, next) => {
   try {
-    console.log("acept", req.body);
+    // console.log("acept", req.body);
 
     // const { bidId } = req.params
     const { bidId } = req.body;
@@ -172,19 +172,19 @@ exports.accept = async (req, res, next) => {
         { isAccepted: true },
         { new: true }
       );
-      console.log("acceptenace for ", bid);
+      // console.log("acceptenace for ", bid);
       if (bid) {
         // expire other bids
-        console.log("bids for single bid", bid);
+        // console.log("bids for single bid", bid);
         await Bid.updateMany(
           { _id: { $ne: ObjectId(bidId) }, nftId: bid.nftId },
           { $set: { isClaimable: true, isExpired: true } }
         );
-        console.log("compiled");
-        console.log("bid object", bid.nftId);
+        // console.log("compiled");
+        // console.log("bid object", bid.nftId);
         const nft = await Nft.findById({ _id: bid.nftId });
 
-        console.log("sold", nft);
+        // console.log("sold", nft);
         await Nft.updateOne(
           { _id: bid.nftId },
           {
