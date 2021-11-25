@@ -7,7 +7,7 @@ router.route("/create").post(cpUpload, controller.create);
 router.route("/edit").put(cpUpload, controller.edit);
 router.route("/get/:nftId").get(controller.get);
 router.route("/list").get(controller.list);
-router.route("/myNFT").post(cpUpload, controller.myNFT);
+router.route("/myNFT").post(controller.myNFT);
 router.route("/update").post(controller.update);
 router.route("/editNft").patch(controller.editNft);
 module.exports = router;

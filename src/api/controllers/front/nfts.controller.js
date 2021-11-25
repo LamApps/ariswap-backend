@@ -15,8 +15,6 @@ exports.create = async (req, res, next) => {
     let payload = req.body;
     if (req.files && req.files.image) {
       const image = req.files.image[0];
-      console.log("======================Image Path=================");
-      console.log(image.path);
       const imgData = fs.readFileSync(image.path);
       payload.image = await addImage(imgData);
     }
