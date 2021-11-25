@@ -371,3 +371,7 @@ exports.myNFT = async (req, res, next) => {
     return next(error);
   }
 };
+
+exports.deletePunks = async (req, res, next) => {
+  await NFT.deleteMany({ type: "CELO_PUNK" });
+};

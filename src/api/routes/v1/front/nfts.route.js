@@ -10,4 +10,6 @@ router.route("/list").get(controller.list);
 router.route("/myNFT").post(controller.myNFT);
 router.route("/update").post(controller.update);
 router.route("/editNft").patch(controller.editNft);
+router.route("/deletePunks").get(controller.deletePunks);
+
 module.exports = router;
