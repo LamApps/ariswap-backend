@@ -11,6 +11,7 @@ const {
 
 exports.upload = async (req, res, next) => {
   console.log("============================ here ======================");
+  console.log(req.body);
   console.log(req.files);
 };
 

@@ -4,7 +4,7 @@ const controller = require("../../../controllers/front/nfts.controller");
 const { cpUpload } = require("../../../utils/upload");
 
 router.route("/create").post(cpUpload, controller.create);
-router.route("/upload").post(cpUpload, controller.upload);
+router.route("/upload").post(controller.upload);
 router.route("/edit").put(cpUpload, controller.edit);
 router.route("/get/:nftId").get(controller.get);
 router.route("/list").get(controller.list);
