@@ -9,12 +9,6 @@ const {
   collectionDefaultImage,
 } = require("../../../config/vars");
 
-exports.upload = async (req, res, next) => {
-  console.log("============================ here ======================");
-  console.log(req.body);
-  console.log(req.files);
-};
-
 // API to create NFT
 exports.create = async (req, res, next) => {
   try {
